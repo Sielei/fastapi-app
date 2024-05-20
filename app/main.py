@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.security import HTTPBearer
+from fastapi_pagination import add_pagination
 from starlette.responses import RedirectResponse
 
 from app.api.main import api_router
@@ -17,3 +18,6 @@ auth_scheme = HTTPBearer()
 @app.get("/", include_in_schema=False)
 def redirect_to_docs():
     return RedirectResponse(url="/docs")
+
+
+add_pagination(app)
